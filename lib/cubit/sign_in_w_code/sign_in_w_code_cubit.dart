@@ -25,35 +25,35 @@ class EmailCodeCubit extends Cubit<ReusableState> {
       }
       final SignInResult result =
           await _authRepo.signInWithCode(email, password, confirmationCode);
-      switch (result) {
-        case SignInResult.signedIn:
-          emit(const ReusableLoadedState());
-          break;
-        case SignInResult.codeMismatch:
-          emit(ReusableErrorState(error: 'code-mismatch'.i18n()));
-          break;
-        case SignInResult.incorrectCredentials:
-          emit(ReusableErrorState(error: 'credentials-error'.i18n()));
-          break;
-        case SignInResult.userChallengeException:
-          emit(ReusableErrorState(error: 'user-challenge-exception'.i18n()));
-          break;
-        case SignInResult.newPasswordRequiredException:
-          emit(ReusableErrorState(error: 'new-password-required'.i18n()));
-          break;
-        case SignInResult.incorrectStateException:
-          emit(ReusableErrorState(error: 'incorrect-state-exception'.i18n()));
-          break;
-        case SignInResult.generalException:
-          emit(ReusableErrorState(error: 'general-exception'.i18n()));
-          break;
-        case SignInResult.userNotConfirmedException:
-          emit(ReusableErrorState(error: 'confirm-account'.i18n()));
-          break;
+      if (result == SignInResult.signedIn) {
+        emit(const ReusableLoadedState());
+      } else {
+        emit(ReusableErrorState(error: _getErrorForSignIn(result)));
       }
     } catch (e) {
       ErrorHandler.refactorError(e);
       emit(ReusableErrorState(error: e.toString()));
+    }
+  }
+
+  String _getErrorForSignIn(SignInResult result) {
+    switch (result) {
+      case SignInResult.codeMismatch:
+        return 'code-mismatch'.i18n();
+      case SignInResult.incorrectCredentials:
+        return 'credentials-error'.i18n();
+      case SignInResult.userChallengeException:
+        return 'user-challenge-exception'.i18n();
+      case SignInResult.newPasswordRequiredException:
+        return 'new-password-required'.i18n();
+      case SignInResult.incorrectStateException:
+        return 'incorrect-state-exception'.i18n();
+      case SignInResult.generalException:
+        return 'general-exception'.i18n();
+      case SignInResult.userNotConfirmedException:
+        return 'confirm-account'.i18n();
+      default:
+        return 'general-exception'.i18n();
     }
   }
 

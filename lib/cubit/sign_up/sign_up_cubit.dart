@@ -30,27 +30,33 @@ class RegistrationCubit extends Cubit<RegistrationEvent> {
     emit(RegistrationLoading());
     final RegistrationResult result =
         await _authRepo.signUp(event.email!, event.password!);
+    handleRegistration(result, event.email!, event.password!);
+  }
+
+  void handleRegistration(
+      RegistrationResult result, String email, String password) {
+    if (result == RegistrationResult.success) {
+      emit(RegistrationLoaded(
+          message: 'sign-up-success-message'.i18n(),
+          userData: ConfirmationCodeArguments(
+            userEmail: email,
+            userPassword: password,
+          )));
+    } else {
+      emit(RegistrationError(message: _getErrorForSignUp(result)));
+    }
+  }
+
+  String _getErrorForSignUp(RegistrationResult result) {
     switch (result) {
-      case RegistrationResult.success:
-        emit(RegistrationLoaded(
-            message: 'sign-up-success-message'.i18n(),
-            userData: ConfirmationCodeArguments(
-              userEmail: event.email!,
-              userPassword: event.password!,
-            )));
-        break;
       case RegistrationResult.accountExists:
-        emit(RegistrationError(message: 'account-exists-error'.i18n()));
-        break;
+        return 'account-exists-error'.i18n();
       case RegistrationResult.generalException:
-        emit(RegistrationError(message: 'general-exception'.i18n()));
-        break;
+        return 'general-exception'.i18n();
       case RegistrationResult.strongPasswordException:
-        emit(RegistrationError(message: 'strong-password-error'.i18n()));
-        break;
+        return 'strong-password-error'.i18n();
       default:
-        emit(RegistrationError(message: 'general-exception'.i18n()));
-        break;
+        return 'general-exception'.i18n();
     }
   }
 

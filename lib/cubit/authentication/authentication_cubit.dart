@@ -32,20 +32,23 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       } else {
         SignInResult result =
             await _authRepositoryContract.signIn(email, password);
-
-        if (result == SignInResult.signedIn) {
-          emit(SuccesLogin());
-        } else if (result == SignInResult.userNotConfirmedException) {
-          emit(AuthenticationNotConfirmed(
-            userData: ConfirmationCodeArguments(
-                userEmail: email, userPassword: password),
-          ));
-        } else {
-          emit(LoginError(error: _getErrorForSignIn(result)));
-        }
+        handleSignInResult(result, email, password);
       }
     } catch (e) {
       emit(AuthenticationError());
+    }
+  }
+
+  void handleSignInResult(SignInResult result, String email, String password) {
+    if (result == SignInResult.signedIn) {
+      emit(SuccessLogin());
+    } else if (result == SignInResult.userNotConfirmedException) {
+      emit(AuthenticationNotConfirmed(
+        userData:
+            ConfirmationCodeArguments(userEmail: email, userPassword: password),
+      ));
+    } else {
+      emit(LoginError(error: _getErrorForSignIn(result)));
     }
   }
 
