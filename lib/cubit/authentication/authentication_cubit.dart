@@ -1,5 +1,4 @@
 import 'package:auth_common/contracts/auth_repository_contract.dart';
-import 'package:auth_common/contracts/user_auth_repo_contract.dart';
 import 'package:auth_common/enums/auth_enums.dart';
 import 'package:auth_ui/arguments/confirmation_code_arguments.dart';
 import 'package:bloc/bloc.dart';
@@ -10,13 +9,10 @@ part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthRepositoryContract _authRepositoryContract;
-  final UserAuthRepoContract _userRepository;
 
   AuthenticationCubit({
     required AuthRepositoryContract authRepository,
-    required UserAuthRepoContract userRepository,
   })  : _authRepositoryContract = authRepository,
-        _userRepository = userRepository,
         super(AuthenticationInitial());
 
   late final String userEmail;
@@ -49,16 +45,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       ));
     } else {
       emit(LoginError(error: _getErrorForSignIn(result)));
-    }
-  }
-
-  void isUserAuthorized() async {
-    try {
-      emit(AuthenticationLoading());
-      await _userRepository.fetchUser();
-      emit(AuthSuccess());
-    } catch (e) {
-      emit(AuthUserForm());
     }
   }
 

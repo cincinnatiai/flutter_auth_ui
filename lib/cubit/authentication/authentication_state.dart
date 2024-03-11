@@ -11,10 +11,6 @@ final class AuthenticationInitial extends AuthenticationState {}
 
 final class SuccessLogin extends AuthenticationState {}
 
-final class AuthSuccess extends AuthenticationState {}
-
-final class AuthUserForm extends AuthenticationState {}
-
 final class LoginError extends AuthenticationState {
   final String error;
 
