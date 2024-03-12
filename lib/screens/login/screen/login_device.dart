@@ -1,6 +1,7 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/login/form/login_form.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginDeviceScreen extends StatelessWidget {
@@ -31,7 +32,7 @@ class LoginDeviceScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Stack(
         children: [
-          SVGBanner(
+          ImageBanner(
             width: width,
             height: height,
             backgroundColor: const Color.fromRGBO(236, 254, 246, 1),

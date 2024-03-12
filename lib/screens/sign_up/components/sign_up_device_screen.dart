@@ -1,6 +1,6 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/sign_up/form/sign_up_form.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/material.dart';
 
 class SignUpDeviceScreen extends StatelessWidget {
@@ -36,7 +36,7 @@ class SignUpDeviceScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Stack(
         children: [
-          SVGBanner(
+          ImageBanner(
             width: double.infinity,
             backgroundColor: backgroundColor,
             path: signUpImagePath,

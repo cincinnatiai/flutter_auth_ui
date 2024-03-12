@@ -1,6 +1,6 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/%20confirmation_code/form/confirmation_code_form.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/widgets.dart';
 
 class ConfirmationCodeDeviceForm extends StatelessWidget {
@@ -28,7 +28,7 @@ class ConfirmationCodeDeviceForm extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SVGBanner(
+          ImageBanner(
             width: double.infinity,
             backgroundColor: backgroundColor,
             path: confirmationCodeImagePath,
