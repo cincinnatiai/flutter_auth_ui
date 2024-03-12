@@ -1,5 +1,5 @@
 import 'package:auth_ui/utils/logo_dimensions.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/material.dart';
 
 class LogoScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class LogoScreen extends StatelessWidget {
     final logoWidth = logoDimensions.calculateLogoWidth();
     final logoHeight = logoDimensions.calculateLogoHeight();
     return Center(
-      child: SVGBanner(
+      child: ImageBanner(
         path: logoPath,
         width: logoWidth,
         height: logoHeight,

@@ -1,6 +1,6 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/sign_up/form/sign_up_form.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/material.dart';
 
 class SignUpWebScreen extends StatelessWidget {
@@ -35,7 +35,7 @@ class SignUpWebScreen extends StatelessWidget {
     const backgroundColor = Color.fromRGBO(236, 254, 246, 1);
     return Row(
       children: [
-        SVGBanner(
+        ImageBanner(
           width: size.width / DimensAuthUi.widthScaleFactor,
           backgroundColor: backgroundColor,
           path: signUpImagePath,

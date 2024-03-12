@@ -2,7 +2,7 @@ import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/login/widgets/error_login_message.dart';
 import 'package:auth_ui/utils/logo_dimensions.dart';
 import 'package:common/widget/buttons/custom_button.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:common/widget/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
@@ -50,7 +50,7 @@ class _ConfirmationCodeFormState extends State<ConfirmationCodeForm> {
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: DimensAuthUi.paddingFormCard),
-          child: SVGBanner(
+          child: ImageBanner(
             path: widget.logoImagePath,
             width: logoWidth,
             height: logoHeight,

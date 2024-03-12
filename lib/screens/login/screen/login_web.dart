@@ -1,6 +1,6 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/login/form/login_form.dart';
-import 'package:common/widget/images/svg_banner.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/material.dart';
 
 class LoginWebScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class LoginWebScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     return Row(
       children: [
-        SVGBanner(
+        ImageBanner(
           width: screenSize.width / DimensAuthUi.widthScaleFactor,
           backgroundColor: const Color.fromRGBO(236, 254, 246, 1),
           path: signInImagePath,
