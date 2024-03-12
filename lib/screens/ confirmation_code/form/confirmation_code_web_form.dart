@@ -1,5 +1,6 @@
 import 'package:auth_common/constants/dimens.dart';
 import 'package:auth_ui/screens/%20confirmation_code/form/confirmation_code_form.dart';
+import 'package:common/widget/images/image_banner.dart';
 import 'package:flutter/widgets.dart';
 
 class ConfirmationCodeWebForm extends StatelessWidget {
@@ -26,13 +27,14 @@ class ConfirmationCodeWebForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     const double imageScreenPercentage = 0.43;
+    const backgroundColor = Color.fromRGBO(236, 254, 246, 1);
     return Row(
       children: [
-        Image.asset(
-          confirmationCodeImagePath,
+        ImageBanner(
           width: size.width * imageScreenPercentage,
           height: size.height,
-          fit: BoxFit.cover,
+          backgroundColor: backgroundColor,
+          path: confirmationCodeImagePath,
         ),
         Expanded(
             child: Center(
