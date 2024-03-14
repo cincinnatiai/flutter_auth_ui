@@ -32,6 +32,7 @@ class ConfirmationCodeDeviceForm extends StatelessWidget {
             width: double.infinity,
             backgroundColor: backgroundColor,
             path: confirmationCodeImagePath,
+            fit: BoxFit.fitHeight,
           ),
           Center(
             child: Container(

@@ -1,4 +1,5 @@
 import 'package:auth_common/constants/dimens.dart';
+import 'package:auth_common/enums/auth_enums.dart';
 import 'package:auth_ui/arguments/confirmation_code_arguments.dart';
 import 'package:auth_ui/cubit/sign_in_w_code/sign_in_w_code_cubit.dart';
 import 'package:auth_ui/screens/%20confirmation_code/form/confirmation_code_device_form.dart';
@@ -11,12 +12,14 @@ class ConfirmationCodeScreen extends StatefulWidget {
   final String logoImagePath;
   final String confirmationImagePath;
   final String nextScreen;
+  final ImageSize imageSize;
 
   const ConfirmationCodeScreen({
     super.key,
     required this.logoImagePath,
     required this.confirmationImagePath,
     required this.nextScreen,
+    this.imageSize = ImageSize.defaultSize,
   });
 
   @override
@@ -70,6 +73,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                   email: args.userEmail,
                   logoImagePath: widget.logoImagePath,
                   confirmationCodeImagePath: widget.confirmationImagePath,
+                  imageSize: widget.imageSize,
                   isLoading: isLoading,
                   errorMessage: errorMessage,
                   confirmCodeAction: (confirmationCode) => cubit.confirmEmail(

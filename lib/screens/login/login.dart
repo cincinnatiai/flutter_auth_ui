@@ -1,6 +1,5 @@
-library auth_ui;
-
 import 'package:auth_common/constants/dimens.dart';
+import 'package:auth_common/enums/auth_enums.dart';
 import 'package:auth_ui/screens/login/screen/login_device.dart';
 import 'package:auth_ui/screens/login/screen/login_web.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class LogIn extends StatefulWidget {
   final bool? validatingCredentials;
   final bool? activateCodeFeature;
   final bool? activeForgotPassword;
+  final ImageSize imageSize;
 
   const LogIn({
     super.key,
@@ -20,6 +20,7 @@ class LogIn extends StatefulWidget {
     required this.signInImagePath,
     required this.logInAction,
     required this.validatingCredentials,
+    required this.imageSize,
     this.activateCodeFeature = false,
     this.activeForgotPassword = false,
   });
@@ -38,6 +39,7 @@ class _LogInState extends State<LogIn> {
         signInImagePath: widget.signInImagePath,
         logInAction: widget.logInAction,
         validatingCredentials: widget.validatingCredentials,
+        imageSize: widget.imageSize,
       );
     } else {
       return LoginDeviceScreen(
