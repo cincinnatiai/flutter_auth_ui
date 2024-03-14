@@ -30,13 +30,13 @@ dependencies:
   common:
     git:
       url: https://github.com/cincinnatiai/flutter_common_library.git
-      fer: main
+      ref: main
 
   auth_common:
     git:
       url: https://github.com/cincinnatiai/flutter_auth_common.git
-      fer: main
-
+      ref: main
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter

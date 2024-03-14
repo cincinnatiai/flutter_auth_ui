@@ -40,6 +40,7 @@ class SignUpDeviceScreen extends StatelessWidget {
             width: double.infinity,
             backgroundColor: backgroundColor,
             path: signUpImagePath,
+            fit: BoxFit.fitHeight,
           ),
           Center(
             child: Container(

@@ -37,6 +37,7 @@ class LoginDeviceScreen extends StatelessWidget {
             height: height,
             backgroundColor: const Color.fromRGBO(236, 254, 246, 1),
             path: signInImagePath,
+            fit: BoxFit.fitHeight,
           ),
           Center(
             child: Container(

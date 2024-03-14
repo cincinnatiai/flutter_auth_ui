@@ -1,4 +1,5 @@
 import 'package:auth_common/constants/dimens.dart';
+import 'package:auth_common/enums/auth_enums.dart';
 import 'package:auth_ui/cubit/sign_up/sign_up_cubit.dart';
 import 'package:auth_ui/cubit/sign_up/sign_up_state.dart';
 import 'package:auth_ui/screens/sign_up/components/sign_up_device_screen.dart';
@@ -10,12 +11,14 @@ class SignUp extends StatefulWidget {
   final String logoImagePath;
   final String signUpImagePath;
   final bool availableConfirmationCodeScreen;
+  final ImageSize imageSize;
 
   const SignUp({
     super.key,
     required this.logoImagePath,
     required this.signUpImagePath,
     required this.availableConfirmationCodeScreen,
+    this.imageSize = ImageSize.defaultSize,
   });
 
   @override
@@ -55,16 +58,17 @@ class _SignUpState extends State<SignUp> {
         return size.width > DimensAuthUi.maxWidth
             ? SignUpWebScreen(
                 logoImagePath: widget.logoImagePath,
-                signUpAction: (email, password, confirmPassword) {
-                  if (password == confirmPassword) {
-                    cubit.onEvent(RegistrationTapped(email, password));
-                  }
-                },
                 signUpImagePath: widget.signUpImagePath,
                 availableConfirmationCodeScreen:
                     widget.availableConfirmationCodeScreen,
                 isSignUpLoading: isSignUpLoading,
                 errorMessage: errorMessage,
+                imageSize: widget.imageSize,
+                signUpAction: (email, password, confirmPassword) {
+                  if (password == confirmPassword) {
+                    cubit.onEvent(RegistrationTapped(email, password));
+                  }
+                },
                 updateErrorMessage: (errorMessage) {
                   setState(() {
                     errorMessage = errorMessage;
@@ -73,16 +77,16 @@ class _SignUpState extends State<SignUp> {
               )
             : SignUpDeviceScreen(
                 logoImagePath: widget.logoImagePath,
-                signUpAction: (email, password, confirmPassword) {
-                  if (password == confirmPassword) {
-                    cubit.onEvent(RegistrationTapped(email, password));
-                  }
-                },
                 signUpImagePath: widget.signUpImagePath,
                 availableConfirmationCodeScreen:
                     widget.availableConfirmationCodeScreen,
                 isSignUpLoading: isSignUpLoading,
                 errorMessage: errorMessage,
+                signUpAction: (email, password, confirmPassword) {
+                  if (password == confirmPassword) {
+                    cubit.onEvent(RegistrationTapped(email, password));
+                  }
+                },
                 updateErrorMessage: (errorMessage) {
                   setState(() {
                     errorMessage = errorMessage;

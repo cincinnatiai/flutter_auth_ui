@@ -1,5 +1,6 @@
 library auth_ui;
 
+import 'package:auth_common/enums/auth_enums.dart';
 import 'package:auth_ui/screens/login/login.dart';
 import 'package:auth_ui/screens/logo/logo_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class AuthUILibrary extends StatefulWidget {
   final bool? enableLocalizations;
   final String logoImagePath;
   final String signInImagePath;
+  final ImageSize imageSize;
   final Function(
     String email,
     String password,
@@ -27,6 +29,7 @@ class AuthUILibrary extends StatefulWidget {
     this.enableLocalizations = false,
     this.errorLoginMessage,
     this.validatingCredentials = false,
+    this.imageSize = ImageSize.defaultSize,
   });
 
   @override
@@ -61,6 +64,7 @@ class _AuthUILibraryState extends State<AuthUILibrary> {
                 widget.logInAction(email, password, code, persistUser);
               },
               validatingCredentials: widget.validatingCredentials!,
+              imageSize: widget.imageSize,
               signInImagePath: widget.signInImagePath,
             )
           : LogoScreen(
